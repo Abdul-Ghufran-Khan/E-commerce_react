@@ -16,6 +16,8 @@ function App() {
   const fetchproducts = async () => {
     const products = await Getproduct()
     setproducts([...products])
+    console.log(products);
+    
   }
 
   return (

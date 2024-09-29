@@ -2,7 +2,7 @@
 
 export default async function Getproduct() {
 try {
-    const product = await fetch("https://api.escuelajs.co/api/v1/products")
+    const product = await fetch("https://fakestoreapi.com/products")
     .then((res) => res.json());
     return product;
 } catch (error) {
