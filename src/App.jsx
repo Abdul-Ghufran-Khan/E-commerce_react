@@ -8,7 +8,8 @@ import Cards from "./Components/Cards";
 function App() {
   const [products, setproducts] = useState([])
   const [cartitems, setcartitems] = useState([])
-  
+  const [showcartItems, setShowcartItems] = useState(false)
+
 
   useEffect(() => {
     fetchproducts()
@@ -42,6 +43,8 @@ function App() {
     setproducts([...products])
   }
 
+  const Iterate = showcartItems ? cartitems : products;
+
   return (
     <>
       <div className='container fixed top-0 left-0 right-0  max-w-screen-2xl h-16 bg-stone-950'>
@@ -52,23 +55,28 @@ function App() {
             <li className="hover:text-amber-800 hover:underline">About</li>
             <li className="hover:text-amber-800 hover:underline">Contact</li>
           </ul>
-          <div className="text-amber-600">
-            <h1 className='w-3 h-3 mx-11 text-white'>{cartitems.length}</h1>
-            <FaShoppingCart className="w-14 h-6 cursor-pointer " />
+          <div className="text-amber-600" onClick={() => setShowcartItems(!showcartItems)}>
+           <h1 className='w-3 h-3 mx-11 text-amber-600 font-semibold cursor-pointer'>{ showcartItems ? "Back" : `${cartitems.length}`}</h1>
+             { showcartItems ? "" : <FaShoppingCart className="w-14 h-6 cursor-pointer " />}
           </div>
         </div>
       </div>
       <section className="text-gray-400 bg-stone body-font">
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-wrap -m-4">
-            {products.map((data) => {
+            {Iterate.map((data) => {
               const isAddedtoCart = cartitems.findIndex((product) => product.id === data.id) !== -1;     
               return(
                 <Cards
                  Addtocart={() => addcartitem(data)} 
                  key={data.id} 
                  item={data} 
+                 RemovefromCart = {showcartItems == true}
                  isAddedtoCart={isAddedtoCart}
+                 Removefromcart = {() => {
+                  const allotheritem = cartitems.filter((product) => product.id !== data.id);
+                  setcartitems([...allotheritem])
+                 }}
                  />
               );
             })}

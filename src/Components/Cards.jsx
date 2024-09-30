@@ -1,10 +1,8 @@
-import { FaShoppingCart } from "react-icons/fa";
+import { MdDeleteSweep } from "react-icons/md";
 
+export default function Cards({ item, Addtocart, isAddedtoCart, RemovefromCart , Removefromcart }) {
 
-
-export default function Cards({item , Addtocart , isAddedtoCart}) {
-
-    const { image, description, title , price} = item
+    const { image, description, title, price } = item
     const descriptions = description.slice(0, 120)
 
     return (
@@ -20,16 +18,21 @@ export default function Cards({item , Addtocart , isAddedtoCart}) {
                         {title}
                     </h1>
                     <p className="leading-relaxed mb-3">
-                        {descriptions+"..."}
+                        {descriptions + "..."}
                     </p>
-                    <div className="flex items-center flex-wrap" onClick={Addtocart}>
+                    <div className="flex justify-between items-center flex-wrap" onClick={Addtocart}>
                         <a className="text-amber-500 inline-flex items-center md:mb-2 lg:mb-0 cursor-pointer">
                             {isAddedtoCart ? "Added" : `Add to Cart`}
-                        </a>
+                        </a> 
+                        {RemovefromCart && (
+                            <a className="text-amber-500 inline-flex items-center md:mb-2 lg:mb-0 cursor-pointer" onClick={Removefromcart}>
+                               {RemovefromCart ?  <MdDeleteSweep className="w-7 h-7" /> : ""}
+                            </a>
+                        )}
                     </div>
-                        <span className="text-gray-200 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-800">
-                            Price : ${price}
-                        </span>
+                    <span className="text-gray-200 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-800">
+                        Price : ${price}
+                    </span>
                 </div>
             </div>
         </div>
