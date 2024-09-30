@@ -1,5 +1,3 @@
-
-
 export default async function Getproduct() {
 try {
     const product = await fetch("https://fakestoreapi.com/products")
