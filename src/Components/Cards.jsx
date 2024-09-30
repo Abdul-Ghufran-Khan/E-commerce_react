@@ -4,8 +4,8 @@ import { FaShoppingCart } from "react-icons/fa";
 
 export default function Cards({item , Addtocart , isAddedtoCart}) {
 
-    const { category, image, description, title , price} = item
-    const descriptions = item.description.slice(0, 120)
+    const { image, description, title , price} = item
+    const descriptions = description.slice(0, 120)
 
     return (
         <div className="p-4 md:w-1/3 sm:w-2/3">
@@ -16,21 +16,18 @@ export default function Cards({item , Addtocart , isAddedtoCart}) {
                     alt="blog"
                 />
                 <div className="p-6">
-                    <h2 className="tracking-widest text-xs title-font font-medium text-orange-500 mb-1">
-                        {category.name}
-                    </h2>
-                    <h1 className="title-font text-lg font-medium text-white mb-3">
+                    <h1 className="title-font text-lg font-semibold text-amber-700 mb-3">
                         {title}
                     </h1>
                     <p className="leading-relaxed mb-3">
                         {descriptions+"..."}
                     </p>
                     <div className="flex items-center flex-wrap" onClick={Addtocart}>
-                        <a className="text-orange-500 inline-flex items-center md:mb-2 lg:mb-0 cursor-pointer">
+                        <a className="text-amber-500 inline-flex items-center md:mb-2 lg:mb-0 cursor-pointer">
                             {isAddedtoCart ? "Added" : `Add to Cart`}
                         </a>
                     </div>
-                        <span className="text-gray-500 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-800">
+                        <span className="text-gray-200 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-800">
                             Price : ${price}
                         </span>
                 </div>
