@@ -4,7 +4,6 @@ import Getproduct from "../utils/getproducts";
 import Cards from "./Components/Cards";
 
 
-
 function App() {
   const [products, setproducts] = useState([])
   const [cartitems, setcartitems] = useState([])
